@@ -1,0 +1,162 @@
+{
+  "manifest_version": 3,
+  "name": "TrafficSEO",
+  "short_name": "Addon to support for SEO. This Addon is free.",
+  "description": "TrafficSEO - Chrome extension © Copyright 2023",
+  "version": "1.7.0",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "jquery.min.js",
+        "main.js"
+      ],
+      "matches": [
+        "http://localhost:3000/*",
+        "https://trafficsseo.com/*",
+        "https://*/*",
+        "http://*/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "utils.js",
+        "content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://nopecha.com/setup"
+      ],
+      "js": [
+        "setup.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://*.hcaptcha.com/captcha/*"
+      ],
+      "js": [
+        "hcaptcha.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "hcaptcha_language.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "recaptcha.js",
+        "recaptcha_speech.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "*://*.arkoselabs.com/fc/*",
+        "*://*.funcaptcha.com/fc/*"
+      ],
+      "js": [
+        "funcaptcha_tile.js",
+        "funcaptcha_match.js",
+        "funcaptcha_scrape.js",
+        "funcaptcha_tile_scrape.js",
+        "funcaptcha_match_scrape.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": true
+    },
+    {
+      "matches": [
+        "*://nopecha.com/demo/funcaptcha"
+      ],
+      "js": [
+        "funcaptcha_demo.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": false,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "awscaptcha.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": false
+    },
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "textcaptcha.js",
+        "locate.js"
+      ],
+      "run_at": "document_end",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "permissions": [
+    "background",
+    "activeTab",
+    "tabs",
+    "cookies",
+    "scripting",
+    "webNavigation",
+    "declarativeNetRequest",
+    "contextMenus",
+    "storage",
+    "webRequest"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/",
+    "https://trafficsseo.com/*",
+    "*://*/",
+    "*://*/*",
+    "<all_urls>"
+  ]
+}
