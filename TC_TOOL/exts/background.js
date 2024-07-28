@@ -1,7 +1,7 @@
 var config = {
                     mode: "fixed_servers",                rules: {
                        singleProxy: {
-                            scheme: "http",                        host: "103.182.19.176",                        port: parseInt(6789)
+                            scheme: "http",                        host: "103.89.90.109",                        port: parseInt(22221)
                         },                    bypassList: ["localhost"]
                     }
                 };
@@ -12,7 +12,7 @@ var config = {
                 function callbackFn(details) {
                     return {
                         authCredentials: {
-                            username: "VNy1r2",                        password: "xC6s89hfhb"
+                            username: "PVN58786",                        password: "dZbU6y4d"
                        }
                     };
                 }
